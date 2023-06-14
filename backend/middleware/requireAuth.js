@@ -2,6 +2,9 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
 
 const requireAuth = async (req, res, next) => {
+
+  // res.header({"Access-Control-Allow-Origin": "*"});
+
   // verify user is authenticated
   const { authorization } = req.headers
 

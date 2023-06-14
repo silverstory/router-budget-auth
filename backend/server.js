@@ -5,13 +5,24 @@ const mongoose = require('mongoose')
 const workoutRoutes = require('./routes/workouts')
 const userRoutes = require('./routes/user')
 
+const cors = require("cors");
+
 // express app
 const app = express()
+
+app.use(cors());
+
+// var corsOptions = {
+//   origin: "http://localhost:5173"
+// };
+
+// app.use(cors(corsOptions));
 
 // middleware
 app.use(express.json())
 
 app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*")
   console.log(req.path, req.method)
   next()
 })

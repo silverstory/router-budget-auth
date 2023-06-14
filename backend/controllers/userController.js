@@ -7,6 +7,9 @@ const createToken = (_id) => {
 
 // login a user
 const loginUser = async (req, res) => {
+
+  res.set('Access-Control-Allow-Origin', '*');
+
   const {email, password} = req.body
 
   try {
@@ -23,6 +26,9 @@ const loginUser = async (req, res) => {
 
 // signup a user
 const signupUser = async (req, res) => {
+
+  res.set('Access-Control-Allow-Origin', '*');
+
   const {email, password} = req.body
 
   try {
