@@ -17,8 +17,10 @@ const loginUser = async (req, res) => {
 
     // create a token
     const token = createToken(user._id)
+    const username = user.username;
+    const usertype = user.usertype;
 
-    res.status(200).json({email, token})
+    res.status(200).json({email, username, usertype, token})
   } catch (error) {
     res.status(400).json({error: error.message})
   }
@@ -29,15 +31,15 @@ const signupUser = async (req, res) => {
 
   res.set('Access-Control-Allow-Origin', '*');
 
-  const {email, password} = req.body
+  const {email, password, username, usertype} = req.body
 
   try {
-    const user = await User.signup(email, password)
+    const user = await User.signup(email, password, username, usertype)
 
     // create a token
     const token = createToken(user._id)
 
-    res.status(200).json({email, token})
+    res.status(200).json({email, username, usertype, token})
   } catch (error) {
     res.status(400).json({error: error.message})
   }
